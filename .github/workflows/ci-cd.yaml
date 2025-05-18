@@ -63,12 +63,19 @@ jobs:
           git config --local user.name "github-actions"
           git config --local user.email "actions@github.com"
 
+      - name: Set lowercase image name
+        run: |
+          echo "IMAGE_NAME=$(echo '${{ github.repository_owner }}/${{ github.event.repository.name }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
       - name: Update deployment.yaml with new image
         run: |
-          sed -i "s|image: my-image:latest|image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}|g" deployment.yaml
+          FULL_IMAGE="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"
+          echo "Replacing image with $FULL_IMAGE"
+          sed -i "s|image: .*|image: $FULL_IMAGE|g" deployment.yaml
 
       - name: Commit and Push changes
         run: |
           git add deployment.yaml
-          git commit -m "Update image to ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"
+          git commit -m "Update image to ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}" || echo "No changes to commit"
           git push origin main
+
