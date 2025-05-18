@@ -16,7 +16,7 @@ spec:
     spec:
       containers: 
       - name: static-site
-        image: my-image:latest
+        image: /:
         ports:
         - containerPort: 80
         resources:   
