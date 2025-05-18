@@ -16,7 +16,7 @@ spec:
     spec:
       containers: 
       - name: static-site
-        image: ghcr.io/nagarajutl/static-site:latest
+        image: ghcr.io/NagarajuTL/static-site:sha-2d5aabc829dcb6c8b97132ac17b3715761c04202
 
         ports:
         - containerPort: 80
