@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       REGISTRY: ghcr.io
-      IMAGE_NAME: ${{ github.repository_owner | toLower }}/${{ github.event.repository.name }}
+      IMAGE_NAME: ${{ toLower(github.repository_owner) }}/${{ github.event.repository.name }}
       IMAGE_TAG: ${{ github.sha }}
     steps:
       - name: Checkout code
