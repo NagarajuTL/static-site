@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      -"/deployment.yaml"
   pull_request:
     branches:
       - main
