@@ -4,7 +4,7 @@ on:
     branches:
       - main
     paths-ignore:
-      -"/deployment.yaml"
+      - "/deployment.yaml"
   pull_request:
     branches:
       - main
