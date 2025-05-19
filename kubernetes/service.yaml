@@ -5,9 +5,9 @@ metadata:
   labels:
     app: my-app
 spec:
-  type: ClusterIP  # or NodePort if you want
+  type: ClusterIP  # or NodePort if you want external access
   ports:
-    - port: 80           # service port (can stay 80 if you want)
-      targetPort: 8000   # container port your app is listening on
+    - port: 80           # service port (public in-cluster port)
+      targetPort: 80     # match this with containerPort!
   selector:
     app: my-app
