@@ -5,10 +5,9 @@ metadata:
   labels:
     app: my-app
 spec:
-  type: ClusterIP          # Changed from NodePort to ClusterIP
+  type: ClusterIP  # or NodePort if you want
   ports:
-    - port: 80
-      targetPort: 80
-      # Removed nodePort field here
+    - port: 80           # service port (can stay 80 if you want)
+      targetPort: 8000   # container port your app is listening on
   selector:
     app: my-app
