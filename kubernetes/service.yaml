@@ -1,14 +1,14 @@
-apiVersion: v1                  
-kind: Service                    
+apiVersion: v1
+kind: Service
 metadata:
   name: my-app
   labels:
     app: my-app
 spec:
-  type: NodePort
+  type: ClusterIP          # Changed from NodePort to ClusterIP
   ports:
     - port: 80
       targetPort: 80
-      nodePort: 30080          
+      # Removed nodePort field here
   selector:
     app: my-app
