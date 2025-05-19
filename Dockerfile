@@ -4,6 +4,4 @@ WORKDIR /app
 
 COPY /src /app/
 
-CMD ["python3","-m","http.server"]
-
-#####
+CMD ["python3", "-m", "http.server", "80"]
